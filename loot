@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z $LOOTER_NAME ]; then
+    echo "Set a \$LOOTER_NAME or you can't loot.";
+    exit;
+fi
+
+if [ -z $LOOTER_EMAIL ]; then
+    echo "Set a \$LOOTER_EMAIL or you can't loot.";
+    exit;
+fi
+
+if [ -z $LOOT_CONTROLLER_EMAIL ]; then
+    echo "Set a \$LOOT_CONTROLLER_EMAIL or you can't loot.";
+    exit;
+fi
+
+echo "Looting a parking space for you $LOOTER_NAME"
+python ./looter.py

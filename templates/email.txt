@@ -1,0 +1,6 @@
+Hi
+
+I would like to book a motorbike parking space for next week please ({{ start_date }} - {{ end_date }}).
+
+Thanks,
+{{ looter_name }}
