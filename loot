@@ -11,22 +11,22 @@ function STDERR () {
 }
 
 error_detected=false
-if [ -z $MAIL_SERVER ]; then
+if [ -z "$MAIL_SERVER" ]; then
     echo "Set a \$MAIL_SERVER or you can't loot." | STDERR
     error_detected=true
 fi
 
-if [ -z $LOOTER_NAME ]; then
+if [ -z "$LOOTER_NAME" ]; then
     echo "Set a \$LOOTER_NAME or you can't loot." | STDERR
     error_detected=true
 fi
 
-if [ -z $LOOTER_EMAIL ]; then
+if [ -z "$LOOTER_EMAIL" ]; then
     echo "Set a \$LOOTER_EMAIL or you can't loot." | STDERR
     error_detected=true
 fi
 
-if [ -z $LOOT_CONTROLLER_EMAIL ]; then
+if [ -z "$LOOT_CONTROLLER_EMAIL" ]; then
     echo "Set a \$LOOT_CONTROLLER_EMAIL or you can't loot." | STDERR
     error_detected=true
 fi
