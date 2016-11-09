@@ -30,6 +30,7 @@ def sendEmail(text):
     msg['Subject'] = 'Motorcycle parking booking'
     msg['From'] = getLooterEmail()
     msg['To'] = getLootControllerEmail()
+    msg['CC'] = getLooterEmail()
     s = smtplib.SMTP('localhost')
     s.sendmail(getLooterEmail(), getLootControllerEmail(), msg.as_string())
     s.quit()
