@@ -25,13 +25,16 @@ def getLooterEmail():
 def getLootControllerEmail():
     return os.environ['LOOT_CONTROLLER_EMAIL']
 
+def getSmtpServer():
+    return os.environ['MAIL_SERVER']
+
 def sendEmail(text):
     msg = MIMEText(text)
     msg['Subject'] = 'Motorcycle parking booking'
     msg['From'] = getLooterEmail()
     msg['To'] = getLootControllerEmail()
     msg['CC'] = getLooterEmail()
-    s = smtplib.SMTP('localhost')
+    s = smtplib.SMTP(getSmtpServer())
     s.sendmail(getLooterEmail(), getLootControllerEmail(), msg.as_string())
     s.quit()
 
