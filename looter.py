@@ -30,7 +30,7 @@ def getSmtpServer():
 
 def sendEmail(text):
     msg = MIMEText(text)
-    msg['Subject'] = 'Motorcycle parking booking'
+    msg['Subject'] = 'Motorbike parking space booking'
     msg['From'] = getLooterEmail()
     msg['To'] = getLootControllerEmail()
     msg['CC'] = getLooterEmail()
