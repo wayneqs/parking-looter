@@ -32,6 +32,7 @@ if [ -z $LOOT_CONTROLLER_EMAIL ]; then
 fi
 
 if $error_detected; then
+    echo "Terminating...!" | STDERR
     exit;
 fi
 
