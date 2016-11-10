@@ -2,5 +2,7 @@ Hi
 
 I would like to book a motorbike parking space for next week please ({{ start_date }} - {{ end_date }}).
 
+My bike is pretty big and I struggle with Bay 1. If availability permits I would like to avoid that bay please.
+
 Thanks,
 {{ looter_name }}
