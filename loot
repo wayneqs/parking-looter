@@ -31,17 +31,10 @@ if [ -z "$LOOT_CONTROLLER_EMAIL" ]; then
     error_detected=true
 fi
 
-if [ -z "$LOOTER_HOME" ]; then
-    echo "Set a \$LOOTER_HOME or you can't loot." | STDERR
-    error_detected=true
-fi
-
 if $error_detected; then
     echo "Terminating...!" | STDERR
     exit;
 fi
-
-cd "$LOOTER_HOME"
 
 echo "Looting a parking space for you $LOOTER_NAME"
 python ./looter.py
