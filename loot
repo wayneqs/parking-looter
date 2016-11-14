@@ -41,5 +41,7 @@ if $error_detected; then
     exit;
 fi
 
+cd "$LOOTER_HOME"
+
 echo "Looting a parking space for you $LOOTER_NAME"
-python $LOOTER_HOME/looter.py
+python ./looter.py
