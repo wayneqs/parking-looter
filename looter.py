@@ -1,9 +1,9 @@
 import os
 import smtplib
 import calendar
-from dateutil.parser import parse
 from datetime import datetime, timedelta
 from email.mime.text import MIMEText
+from dateutil.parser import parse
 from jinja2 import Environment, FileSystemLoader
 
 def day_in_week_format(value, fmt='medium'):
@@ -11,7 +11,7 @@ def day_in_week_format(value, fmt='medium'):
     if fmt == 'full':
         fmt = "%a, %d %b %Y"
     elif fmt == 'medium':
-        fmt = "%a, %d %b"
+        fmt = "%a (%d %b)"
     elif fmt == 'light':
         fmt = "%a"
     elif fmt == 'date':
@@ -40,6 +40,10 @@ def get_looter_email():
     """ Returns the email address of the person booking the resource """
     return os.environ['LOOTER_EMAIL']
 
+def get_smtp_server():
+    """ Returns the SMTP server address """
+    return os.environ['MAIL_SERVER']
+
 def get_loot_controller_email():
     """ Returns the email address of the person who controls the resource """
     return os.environ['LOOT_CONTROLLER_EMAIL']
@@ -51,19 +55,22 @@ def send_email(text):
     msg['From'] = get_looter_email()
     msg['CC'] = get_looter_email()
     msg['To'] = get_loot_controller_email()
-    smtp = smtplib.SMTP('localhost')
+    smtp = smtplib.SMTP(get_smtp_server())
     smtp.sendmail(get_looter_email(), get_loot_controller_email(), msg.as_string())
     smtp.quit()
 
 def load_holidays_in_range(start, end):
     """ Loads holidays from data file; past holidays are ignored """
+    start = parse(start)
+    end = parse(end)
     holidays = []
     if os.path.exists('holidays.dat'):
         with open('holidays.dat') as f:
             for line in f.readlines():
                 date = parse(line)
-                if date < end and date > start:
+                if date <= end and date >= start:
                     holidays.append(date)
+    holidays.sort()
     return holidays
 
 def run():
