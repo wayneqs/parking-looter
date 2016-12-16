@@ -1,8 +1,13 @@
 Hi
 
-I would like to book a motorbike parking space for next week please ({{ start_date }} - {{ end_date }}).
+I would like to book a motorbike parking space for next week please (week beginning {{ start_date }}).
 
-My bike is pretty big and I struggle with Bay 1. If availability permits I would like to avoid that bay please.
+{% if holidays_in_period|length > 0 %}
+Please note that I will not need the space on the following days as I will be out of the office:
+  {% for date in holidays_in_period %}
+   - {{ holiday_date|datetime }}
+  {% endfor %}
+{% endif %}
 
 Thanks,
 {{ looter_name }}
