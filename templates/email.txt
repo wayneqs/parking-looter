@@ -2,9 +2,12 @@ Hi
 
 I would like to book a motorbike parking space for next week please (week beginning {{ start_date }}).
 
-{% if holidays_in_period|length > 0 %}
+{% if holidays_in_period|length == 1 %}
+Please note that I will not need the space on {{ holidays_in_period[0]|datetime }} as I will be out of the office.
+{% endif %}
+{% if holidays_in_period|length > 1 %}
 Please note that I will not need the space on the following days as I will be out of the office:
-  {% for date in holidays_in_period %}
+  {% for holiday_date in holidays_in_period %}
    - {{ holiday_date|datetime }}
   {% endfor %}
 {% endif %}
